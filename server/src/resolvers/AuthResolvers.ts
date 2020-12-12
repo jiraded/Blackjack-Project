@@ -12,7 +12,7 @@ export class AuthResolvers {
     try {
       const hashedPassword = await bcryptjs.hash(password, 10)
       const user = await UserModel.create({ username, password: hashedPassword, tokenVersion: 0 })
-      const token = createToken(user.id, user.tokenVersion)
+      const token = createToken(user._id, user.tokenVersion)
       sendToken(res, token)
       return user
     } catch (error) {
@@ -27,7 +27,7 @@ export class AuthResolvers {
       if (!user) throw new Error('username not found !')
       const isPasswordValid = await bcryptjs.compare(password, user.password)
       if (!isPasswordValid) throw new Error('password is invalid !')
-      const token = createToken(user.id, user.tokenVersion)
+      const token = createToken(user._id, user.tokenVersion)
       sendToken(res, token)
       return user
     } catch (error) {

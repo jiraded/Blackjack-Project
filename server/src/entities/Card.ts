@@ -6,7 +6,7 @@ import { CardTypes, CardValues, CardColors } from '../types'
 @index({ type: 1, value: 1 }, { unique: true })
 export class Card {
   @Field(() => ID)
-  id?: string
+  _id?: string
 
   @Field()
   @prop({ required: true, enum: CardTypes })

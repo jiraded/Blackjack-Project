@@ -9,9 +9,9 @@ export class PlayResolvers {
   async startRun(@Ctx() { req }: AppContext): Promise<Run> {
     try {
       const user = await isAuthenticated(req.userId, req.tokenVersion)
-      const currentActiveRun = await RunModel.findOne({ userId: user.id, status: RunStatuses.active })
+      const currentActiveRun = await RunModel.findOne({ userId: user._id, status: RunStatuses.active })
       if (currentActiveRun) throw new Error('active round exists')
-      const run = await RunModel.create({ userId: user.id })
+      const run = await RunModel.create({ userId: user._id })
       console.log('typeof run', typeof run)
       return run
     } catch (error) {
@@ -25,7 +25,7 @@ export class PlayResolvers {
       const user = await isAuthenticated(req.userId, req.tokenVersion)
       const run = await RunModel.findById(runId)
       if (!run) throw new Error('run not found')
-      if (String(run.userId) !== user.id) throw new Error('not your run')
+      if (String(run.userId) !== user._id) throw new Error('not your run')
       run.status = RunStatuses.cancelled
       await run.save()
       return true

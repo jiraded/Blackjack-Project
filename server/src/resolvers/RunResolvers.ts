@@ -20,7 +20,7 @@ export class RunResolvers {
   async userRuns(@Ctx() { req }: AppContext): Promise<Run[]> {
     try {
       const user = await isAuthenticated(req.userId, req.tokenVersion)
-      const runs = await RunModel.find({ userId: user.id })
+      const runs = await RunModel.find({ userId: user._id })
       return runs
     } catch (error) {
       throw error

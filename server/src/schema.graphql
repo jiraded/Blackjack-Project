@@ -4,9 +4,9 @@
 # -----------------------------------------------
 
 type Card {
+  _id: ID!
   color: String!
   createdAt: DateTime!
-  id: ID!
   type: String!
   updatedAt: DateTime!
   value: String!
@@ -18,9 +18,9 @@ The javascript `Date` as string. Type represents date and time as the ISO Date s
 scalar DateTime
 
 type Game {
+  _id: ID
   active: Boolean!
   createdAt: DateTime!
-  id: ID
   income: Boolean!
   no: Float!
   updatedAt: DateTime!
@@ -50,9 +50,9 @@ enum Roles {
 }
 
 type Run {
+  _id: ID!
   createdAt: DateTime!
   games: Game!
-  id: ID!
   score: Float!
   status: String!
   updatedAt: DateTime!
@@ -60,8 +60,8 @@ type Run {
 }
 
 type User {
+  _id: ID!
   createdAt: DateTime!
-  id: ID!
   roles: [Roles!]!
   runs: [Run!]!
   updatedAt: DateTime!

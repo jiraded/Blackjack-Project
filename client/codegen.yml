@@ -1,8 +1,7 @@
 overwrite: true
 schema: 'http://localhost:5000/graphql'
 generates:
-  src/types/graphql.ts:
+  src/graphql/generated.tsx:
     plugins:
       - 'typescript'
-    config:
-      useIndexSignature: true
+      - 'typescript-operations'

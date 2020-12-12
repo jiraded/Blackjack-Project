@@ -8,7 +8,7 @@ import { Game } from './Game'
 @ObjectType()
 export class Run {
   @Field(() => ID)
-  id: string
+  _id?: string
 
   @prop({ required: true, default: 0 })
   userId: mongoose.Types.ObjectId

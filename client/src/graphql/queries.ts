@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client'
 
 export const CARDS = gql`
-  query {
+  query CARDS {
     cards {
       type
       value

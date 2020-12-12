@@ -1,60 +1,34 @@
-import { Card } from '../types/graphql'
+import { Card } from '../graphql/generated'
 import styled from 'styled-components'
 
 interface Props extends Card {
   reveal?: boolean
 }
 
-const Main = styled.div`
-  height: 180px;
-  width: 130px;
-  background: #f2f2f2;
-  border: 1px solid #d2d2d2;
-  background-image: url('https://inspirationhut.net/wp-content/uploads/2014/09/grey-paper-texture.jpg');
-  background-repeat: repeat;
-  box-sizing: border-box;
-  box-shadow: 0px 5px 34px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  .content {
-    margin-top: 8px;
-    width: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .value {
-      color: ${({ color }) => color};
-      font-size: 40px;
-      font-weight: 700;
-    }
-    .type {
-      font-size: 20px;
-      fill: ${({ color }) => color};
-      color: transparent;
-      text-shadow: 0 0 0 ${({ color }) => color};
-    }
-  }
-  .back {
-    width: calc(100% - 20px);
-    height: calc(100% - 20px);
-    background: repeating-linear-gradient(45deg, transparent, transparent 8px, #2f80ed 8px, #2f80ed 18px);
-    margin: 10px;
-  }
+const Emoji = styled.div<{ _color: string }>`
+  text-shadow: 0 0 0 ${({ _color }) => _color};
+`
+
+const CardBack = styled.div`
+  background: repeating-linear-gradient(45deg, transparent, transparent 8px, #2f80ed 8px, #2f80ed 18px);
 `
 
 const CardComponent: React.FC<Props> = ({ type, value, color, reveal }) => {
   return (
-    <Main color={color}>
+    <div className='h-60 w-40 bg-gray-100 rounded-xl shadow-sm'>
       {reveal ? (
-        <div className='content'>
-          <div className='value'>{value}</div>
-          <div className='type'>{type}</div>
+        <div className='m-4 w-10 flex flex-col items-center'>
+          <div className='text-3xl font-extrabold' style={{ color }}>
+            {value}
+          </div>
+          <Emoji _color={color} className='text-lg text-transparent'>
+            {type}
+          </Emoji>
         </div>
       ) : (
-        <>
-          <div className='back' />
-        </>
+        <CardBack className='h-56 w-38 m-2 rounded-md' />
       )}
-    </Main>
+    </div>
   )
 }
 

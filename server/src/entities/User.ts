@@ -6,7 +6,7 @@ import { Run } from './Run'
 @ObjectType()
 export class User {
   @Field(() => ID)
-  id: string
+  _id?: string
 
   @Field(() => [Run])
   runs?: Run[]

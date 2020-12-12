@@ -36,8 +36,8 @@ export default async () => {
             user.tokenVersion++
             const updatedUser = await user.save()
             if (!updatedUser) throw new Error('database error')
-            const token = createToken(updatedUser.id, updatedUser.tokenVersion)
-            decodedToken.userId = updatedUser.id
+            const token = createToken(updatedUser._id, updatedUser.tokenVersion)
+            decodedToken.userId = updatedUser._id
             decodedToken.tokenVersion = updatedUser.tokenVersion
             sendToken(res, token)
           }

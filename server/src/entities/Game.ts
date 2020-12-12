@@ -8,7 +8,7 @@ import { Run } from './Run'
 @index({ runId: 1, no: 1 }, { unique: true })
 export class Game {
   @Field(() => ID, { nullable: true })
-  id: string
+  _id?: string
 
   @prop({ required: true })
   runId: mongoose.Types.ObjectId

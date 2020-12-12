@@ -23,7 +23,7 @@ export type Query = {
 
 export type User = {
   __typename?: 'User';
-  id: Scalars['ID'];
+  _id: Scalars['ID'];
   runs: Array<Run>;
   username: Scalars['String'];
   roles: Array<Roles>;
@@ -33,7 +33,7 @@ export type User = {
 
 export type Run = {
   __typename?: 'Run';
-  id: Scalars['ID'];
+  _id: Scalars['ID'];
   user: User;
   games: Game;
   score: Scalars['Float'];
@@ -44,7 +44,7 @@ export type Run = {
 
 export type Game = {
   __typename?: 'Game';
-  id?: Maybe<Scalars['ID']>;
+  _id?: Maybe<Scalars['ID']>;
   no: Scalars['Float'];
   active: Scalars['Boolean'];
   income: Scalars['Boolean'];
@@ -62,7 +62,7 @@ export enum Roles {
 
 export type Card = {
   __typename?: 'Card';
-  id: Scalars['ID'];
+  _id: Scalars['ID'];
   type: Scalars['String'];
   value: Scalars['String'];
   color: Scalars['String'];

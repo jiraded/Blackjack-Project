@@ -26,7 +26,7 @@ const startSever = async () => {
 
   const server = await createServer()
 
-  server.applyMiddleware({ app, cors: false })
+  server.applyMiddleware({ app, cors: { origin: 'http://localhost:3000', credentials: true } })
 
   app.listen({ port: PORT || 5000 }, () => console.log(`Server is ready at http://localhost:${PORT || 5000}${server.graphqlPath}`))
 }

@@ -5,7 +5,7 @@ import { ObjectType, Field, ID } from 'type-graphql'
 @ObjectType()
 export class Profile {
   @Field(() => ID)
-  id: string
+  _id?: string
 
   @Field()
   @prop({ required: true })

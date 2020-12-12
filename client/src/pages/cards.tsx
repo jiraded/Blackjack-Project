@@ -1,6 +1,6 @@
-import { CARDS } from '../apollo/queries'
-import { client } from '../apollo/client'
-import { Card } from '../types/graphql'
+import { CARDS } from '../graphql/queries'
+import { client } from '../graphql/client'
+import { Card } from '../graphql/generated'
 import CardComponent from '../components/Card'
 import styled from 'styled-components'
 
@@ -27,7 +27,6 @@ const CardPage = ({ cards }: Props) => {
 
 export const getStaticProps = async () => {
   const res = await client.request(CARDS)
-  console.log(res.cards[0])
   return {
     props: {
       cards: res.cards,
